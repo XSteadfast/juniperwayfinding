@@ -82,3 +82,17 @@ if (homeHeader) {
 	updateHeader();
 	window.addEventListener("scroll", updateHeader, { passive: true });
 }
+
+const heroWord = document.querySelector(".hero-word");
+if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+	const words = ["tense", "down", "alone", "angry", "numb"];
+	let index = 0;
+	setInterval(() => {
+		heroWord.classList.add("is-out");
+		setTimeout(() => {
+			index = (index + 1) % words.length;
+			heroWord.textContent = words[index];
+			heroWord.classList.remove("is-out");
+		}, 350);
+	}, 2600);
+}
