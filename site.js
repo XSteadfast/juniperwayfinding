@@ -39,7 +39,7 @@ messageField?.addEventListener("input", () => {
 	wordCount.classList.toggle("is-met", count >= 15);
 });
 
-document.querySelector("#booking-form")?.addEventListener("submit", (event) => {
+document.querySelector("#booking-form")?.addEventListener("submit", async (event) => {
 	event.preventDefault();
 	const form = event.currentTarget;
 	const status = document.querySelector("#form-status");
@@ -60,16 +60,39 @@ document.querySelector("#booking-form")?.addEventListener("submit", (event) => {
 		form.message.focus();
 		return;
 	}
-	const bookingEmail = "";
-	if (!bookingEmail) {
-		status.textContent = "Booking email is not configured yet. Please use the contact details provided directly by Demetri.";
-		return;
-	}
 	const fields = new FormData(form);
-	const subject = encodeURIComponent("23-minute spark request");
-	const body = encodeURIComponent(`First name: ${fields.get("name")}\nEmail or phone: ${fields.get("contact")}\nAvailability: ${fields.getAll("availability").join(", ")}\n\nWhat feels most in the way right now?\n${fields.get("message")}`);
-	window.location.href = `mailto:${bookingEmail}?subject=${subject}&body=${body}`;
-	status.textContent = "Your email app should open with your request ready to send.";
+	const name = fields.get("name").trim();
+	const payload = {
+		access_key: "4f2765c3-d3f1-4fb9-b952-4385557aee73",
+		subject: `23-minute spark request from ${name}`,
+		from_name: "Juniper Wayfinding website",
+		botcheck: fields.get("botcheck") ? true : "",
+		"First name": name,
+		"Email or phone": contact,
+		"Availability": fields.getAll("availability").join(", "),
+		"What feels most in the way right now?": fields.get("message").trim()
+	};
+	if (isEmail) payload.email = contact;
+	const button = form.querySelector('button[type="submit"]');
+	button.disabled = true;
+	status.textContent = "Sending…";
+	try {
+		const response = await fetch("https://api.web3forms.com/submit", {
+			method: "POST",
+			headers: { "Content-Type": "application/json", Accept: "application/json" },
+			body: JSON.stringify(payload)
+		});
+		const result = await response.json();
+		if (!result.success) throw new Error(result.message);
+		form.reset();
+		wordCount.textContent = "0 of 15 words";
+		wordCount.classList.remove("is-met");
+		status.textContent = `Thank you, ${name}. Your request is on its way, and Demetri will be in touch soon.`;
+	} catch {
+		status.textContent = "Something went wrong sending your request. Please try again in a moment.";
+	} finally {
+		button.disabled = false;
+	}
 });
 
 const homeHeader = document.querySelector(".home-header");
@@ -85,7 +108,7 @@ if (homeHeader) {
 
 const heroWord = document.querySelector(".hero-word");
 if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-	const words = ["tense", "down", "alone", "angry", "numb"];
+	const words = ["burnt out", "frustrated", "nervous", "self-critical", "lonely"];
 	let index = 0;
 	setInterval(() => {
 		heroWord.classList.add("is-out");
@@ -96,3 +119,8 @@ if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) 
 		}, 350);
 	}, 2600);
 }
+
+// Placeholder links (e.g. Instagram) stay put until a real URL is added.
+document.querySelectorAll('a[href="#"]').forEach((link) => {
+	link.addEventListener("click", (event) => event.preventDefault());
+});
