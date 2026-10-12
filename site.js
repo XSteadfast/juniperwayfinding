@@ -29,15 +29,18 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 	});
 }, { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+document.querySelectorAll(".footer-roots").forEach((item) => revealObserver.observe(item));
 
 const countWords = (text) => text.trim().split(/\s+/).filter(Boolean).length;
-const messageField = document.querySelector("#message");
-const wordCount = document.querySelector("#word-count");
-messageField?.addEventListener("input", () => {
-	const count = countWords(messageField.value);
-	wordCount.textContent = count >= 15 ? `${count} words ✓` : `${count} of 15 words`;
-	wordCount.classList.toggle("is-met", count >= 15);
-});
+const wordFields = document.querySelectorAll("textarea[data-min-words]");
+const updateWordCount = (field) => {
+	const min = Number(field.dataset.minWords);
+	const count = countWords(field.value);
+	const output = document.querySelector(`.word-count[data-for="${field.id}"]`);
+	output.textContent = count >= min ? `${count} words ✓` : `${count} of ${min} words`;
+	output.classList.toggle("is-met", count >= min);
+};
+wordFields.forEach((field) => field.addEventListener("input", () => updateWordCount(field)));
 
 document.querySelector("#booking-form")?.addEventListener("submit", async (event) => {
 	event.preventDefault();
@@ -60,6 +63,16 @@ document.querySelector("#booking-form")?.addEventListener("submit", async (event
 		form.message.focus();
 		return;
 	}
+	if (countWords(form.tried.value) < 10) {
+		status.textContent = "Please share at least 10 words about therapy or self-help you’ve tried, or why you haven’t.";
+		form.tried.focus();
+		return;
+	}
+	if (countWords(form.quality.value) < 20) {
+		status.textContent = "Please share at least 20 words about your worst quality and an example of it in action.";
+		form.quality.focus();
+		return;
+	}
 	const fields = new FormData(form);
 	const name = fields.get("name").trim();
 	const payload = {
@@ -67,10 +80,12 @@ document.querySelector("#booking-form")?.addEventListener("submit", async (event
 		subject: `23-minute spark request from ${name}`,
 		from_name: "Juniper Wayfinding website",
 		botcheck: fields.get("botcheck") ? true : "",
-		"First name": name,
+		"Preferred name": name,
 		"Email or phone": contact,
 		"Availability": fields.getAll("availability").join(", "),
-		"What feels most in the way right now?": fields.get("message").trim()
+		"What feels most in the way right now?": fields.get("message").trim(),
+		"Tried therapy or self-help?": fields.get("tried").trim(),
+		"Worst quality, with an example": fields.get("quality").trim()
 	};
 	if (isEmail) payload.email = contact;
 	const button = form.querySelector('button[type="submit"]');
@@ -85,8 +100,7 @@ document.querySelector("#booking-form")?.addEventListener("submit", async (event
 		const result = await response.json();
 		if (!result.success) throw new Error(result.message);
 		form.reset();
-		wordCount.textContent = "0 of 15 words";
-		wordCount.classList.remove("is-met");
+		wordFields.forEach(updateWordCount);
 		status.textContent = `Thank you, ${name}. Your request is on its way, and Demetri will be in touch soon.`;
 	} catch {
 		status.textContent = "Something went wrong sending your request. Please try again in a moment.";
