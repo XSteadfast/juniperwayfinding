@@ -32,13 +32,14 @@ document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(it
 document.querySelectorAll(".footer-roots").forEach((item) => revealObserver.observe(item));
 
 const countWords = (text) => text.trim().split(/\s+/).filter(Boolean).length;
-const wordFields = document.querySelectorAll("textarea[data-min-words]");
+// Word counts are gentle guidance only: a tick appears at the suggested length, nothing is blocked.
+const wordFields = document.querySelectorAll("textarea[data-suggested-words]");
 const updateWordCount = (field) => {
-	const min = Number(field.dataset.minWords);
+	const suggested = Number(field.dataset.suggestedWords);
 	const count = countWords(field.value);
 	const output = document.querySelector(`.word-count[data-for="${field.id}"]`);
-	output.textContent = count >= min ? `${count} words ✓` : `${count} of ${min} words`;
-	output.classList.toggle("is-met", count >= min);
+	output.textContent = `${count} ${count === 1 ? "word" : "words"}${count >= suggested ? " ✓" : ""}`;
+	output.classList.toggle("is-met", count >= suggested);
 };
 wordFields.forEach((field) => field.addEventListener("input", () => updateWordCount(field)));
 
@@ -58,26 +59,11 @@ document.querySelector("#booking-form")?.addEventListener("submit", async (event
 		status.textContent = "Please tick at least one time that usually works for you.";
 		return;
 	}
-	if (countWords(form.message.value) < 15) {
-		status.textContent = "Please share at least 15 words about what feels most in the way.";
-		form.message.focus();
-		return;
-	}
-	if (countWords(form.tried.value) < 10) {
-		status.textContent = "Please share at least 10 words about therapy or self-help you’ve tried, or why you haven’t.";
-		form.tried.focus();
-		return;
-	}
-	if (countWords(form.quality.value) < 20) {
-		status.textContent = "Please share at least 20 words about your worst quality and an example of it in action.";
-		form.quality.focus();
-		return;
-	}
 	const fields = new FormData(form);
 	const name = fields.get("name").trim();
 	const payload = {
 		access_key: "4f2765c3-d3f1-4fb9-b952-4385557aee73",
-		subject: `23-minute spark request from ${name}`,
+		subject: `23-minute call request from ${name}`,
 		from_name: "Juniper Wayfinding website",
 		botcheck: fields.get("botcheck") ? true : "",
 		"Preferred name": name,
@@ -85,7 +71,7 @@ document.querySelector("#booking-form")?.addEventListener("submit", async (event
 		"Availability": fields.getAll("availability").join(", "),
 		"What feels most in the way right now?": fields.get("message").trim(),
 		"Tried therapy or self-help?": fields.get("tried").trim(),
-		"Worst quality, with an example": fields.get("quality").trim()
+		"A pattern they’d like to change": fields.get("quality").trim() || "(left blank)"
 	};
 	if (isEmail) payload.email = contact;
 	const button = form.querySelector('button[type="submit"]');
@@ -122,7 +108,7 @@ if (homeHeader) {
 
 const heroWord = document.querySelector(".hero-word");
 if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-	const words = ["burnt out", "frustrated", "nervous", "self-critical", "lonely"];
+	const words = ["burnt out", "lost", "nervous", "self-critical", "lonely"];
 	let index = 0;
 	setInterval(() => {
 		heroWord.classList.add("is-out");
@@ -131,10 +117,19 @@ if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) 
 			heroWord.textContent = words[index];
 			heroWord.classList.remove("is-out");
 		}, 350);
-	}, 2600);
+	}, 3000);
 }
 
 // Placeholder links (e.g. Instagram) stay put until a real URL is added.
 document.querySelectorAll('a[href="#"]').forEach((link) => {
 	link.addEventListener("click", (event) => event.preventDefault());
+});
+
+// About page: "Reveal the meaning of life" swaps the button for the answer, in place.
+document.querySelector("button.meaning-btn")?.addEventListener("click", (event) => {
+	const button = event.currentTarget;
+	const answer = document.getElementById(button.getAttribute("aria-controls"));
+	button.hidden = true;
+	answer.hidden = false;
+	answer.focus();
 });
