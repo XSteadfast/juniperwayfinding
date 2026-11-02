@@ -108,7 +108,7 @@ if (homeHeader) {
 
 const heroWord = document.querySelector(".hero-word");
 if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-	const words = ["burnt out", "lost", "nervous", "self-critical", "lonely"];
+	const words = ["burnt out", "lost", "nervous", "self-critical"];
 	let index = 0;
 	setInterval(() => {
 		heroWord.classList.add("is-out");
