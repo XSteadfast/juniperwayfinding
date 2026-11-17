@@ -63,7 +63,7 @@ document.querySelector("#booking-form")?.addEventListener("submit", async (event
 	const name = fields.get("name").trim();
 	const payload = {
 		access_key: "4f2765c3-d3f1-4fb9-b952-4385557aee73",
-		subject: `23-minute call request from ${name}`,
+		subject: `Book Your Wayfind: request from ${name}`,
 		from_name: "Juniper Wayfinding website",
 		botcheck: fields.get("botcheck") ? true : "",
 		"Preferred name": name,
@@ -87,7 +87,7 @@ document.querySelector("#booking-form")?.addEventListener("submit", async (event
 		if (!result.success) throw new Error(result.message);
 		form.reset();
 		wordFields.forEach(updateWordCount);
-		status.textContent = `Thank you, ${name}. Your request is on its way, and Demetri will be in touch soon.`;
+		status.textContent = `Thank you, ${name}. Your request is on its way, and I’ll be in touch soon.`;
 	} catch {
 		status.textContent = "Something went wrong sending your request. Please try again in a moment.";
 	} finally {
@@ -108,7 +108,7 @@ if (homeHeader) {
 
 const heroWord = document.querySelector(".hero-word");
 if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-	const words = ["burnt out", "lost", "nervous", "self-critical"];
+	const words = ["exhausted", "confused", "hopeless"];
 	let index = 0;
 	setInterval(() => {
 		heroWord.classList.add("is-out");
@@ -123,13 +123,4 @@ if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) 
 // Placeholder links (e.g. Instagram) stay put until a real URL is added.
 document.querySelectorAll('a[href="#"]').forEach((link) => {
 	link.addEventListener("click", (event) => event.preventDefault());
-});
-
-// About page: "Reveal the meaning of life" swaps the button for the answer, in place.
-document.querySelector("button.meaning-btn")?.addEventListener("click", (event) => {
-	const button = event.currentTarget;
-	const answer = document.getElementById(button.getAttribute("aria-controls"));
-	button.hidden = true;
-	answer.hidden = false;
-	answer.focus();
 });
