@@ -115,3 +115,5 @@
 .about-continued{margin:clamp(36px,5vw,56px) 0 clamp(28px,4vw,44px)}
 @media(max-width:680px){.about-continued{margin-top:0}}
 .ai-note{margin:0;color:rgb(255 255 255 / 62%);font-size:.8rem;font-style:italic}.closing p.ai-note{max-width:none;margin:22px auto 0;color:rgb(255 255 255 / 55%);font-size:.92rem}
+.hero-cst{position:absolute;top:100%;left:0;margin-top:12px;overflow:visible;pointer-events:none}
+@media(max-width:680px){.hero-cst{position:static;display:block;margin:14px 0 -10px}}
