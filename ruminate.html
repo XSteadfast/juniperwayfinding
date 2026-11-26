@@ -133,8 +133,8 @@
 		<section class="section model-section"><div class="shell">
 <div class="wrap" data-level="0" data-act="0" data-belief="0">
   <div class="head">
-    <h2>Why my mind won't shut off about it</h2>
-    <p>That person. That mistake. That task I haven't done. I can't win against it by thinking harder. Follow the red loop below: friction that circles endlessly.</p>
+    <h2>Why my mind won’t shut off about it</h2>
+    <p>That person. That mistake. That task I haven’t done. I can’t win against it by thinking harder. Follow the red loop below: friction that circles endlessly.</p>
   </div>
 
   <div class="banner">
@@ -300,7 +300,7 @@
   // toggles: calm = Roots (body), belief = Trunk (mind), act = Crown (worth)
   const S={act:false,calm:false,belief:false};
   const EV={
-    act:{off:'This still feels like a verdict on me.', on:'My worth isn\'t riding on this.'},
+    act:{off:'This still feels like a verdict on me.', on:'My worth isn’t riding on this.'},
     calm:{off:'My body is still on high alert.', on:'My body has settled.'},
     bel:{off:'A rigid rule keeps reopening it.', on:'The rule has loosened its grip.'}
   };
@@ -331,7 +331,7 @@
         set(tid, EV[k][on?'on':'off']);
       });
 
-    set('s-narr', act&&belief?'"it doesn\'t define me, I can let it go"' : act?'"this doesn\'t decide my worth"' : belief?'"I\'d have preferred otherwise"' : calm?'"quieter, but still there"' : '"why can\'t I let this go?"');
+    set('s-narr', act&&belief?'"it doesn’t define me, I can let it go"' : act?'"this doesn’t decide my worth"' : belief?'"I’d have preferred otherwise"' : calm?'"quieter, but still there"' : '"why can’t I let this go?"');
     set('s-hub', belief&&act?'verdict: RESOLVED · stand down' : belief?'verdict: open · but bearable' : act?'verdict: not a threat to me' : calm?'verdict: UNRESOLVED · but calmer' : 'verdict: UNRESOLVED · stay alert');
     set('s-rep', act&&belief?'quiet · it passes through' : act?'less to defend' : belief?'runs with less charge' : calm?'still running · softer' : 'running it again · and again');
     set('s-amy', act?'the stake is gone' : belief?'threat tag weakened' : 'tagged: threat to me');
@@ -341,12 +341,12 @@
     set('s-aro', calm?'lowered':'stuck ON');
     set('s-bod', calm?'settled':'wired · tense');
     set('aro-t', calm?'Stress baseline':'Stress baseline 🔥');
-    set('s-exit', act?'worth isn\'t at stake':'worth feels on the line');
+    set('s-exit', act?'worth isn’t at stake':'worth feels on the line');
     set('exit-t', act?'Secure self ✓':'Secure self');
     set('bel-t', belief?'Preference':'Rigid demand');
-    set('s-bel', belief?'"I\'d strongly prefer, and I can bear it"':'MUST · CAN\'T STAND · AWFUL');
+    set('s-bel', belief?'"I’d strongly prefer, and I can bear it"':'MUST · CAN\'T STAND · AWFUL');
     set('l-bedge', belief?'holds no charge':'sets the verdict');
-    set('l-will', belief?'I don\'t need to suppress it':'"just stop thinking about it"');
+    set('l-will', belief?'I don’t need to suppress it':'"just stop thinking about it"');
 
     attr('exitbox','fill',act?'#E1F5EE':'#F1EFE8');
     attr('exitbox','stroke',act?'#0F6E56':'#a8a69c');
