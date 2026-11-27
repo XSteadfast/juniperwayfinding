@@ -2,32 +2,32 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#183d32">
-	<meta name="description" content="An interactive map by Demetri of what happens during overthinking, or rumination: the loops between thoughts, brain chemistry and the body, and how the roots, trunk and crown of the Juniper Method help them move from friction into flow. Informed by research.">
-	<title>Overthinking, Mapped | Juniper Wayfinding</title>
+	<meta name="description" content="An interactive map by Demetri of what happens during overthinking, or rumination, and how the roots, trunk and crown of the Juniper Method help it move from friction into flow. Includes the Behavioural Drive Formula. Informed by research.">
+	<title>Overthinking, Mapped + Drive Formula | Juniper Wayfinding</title>
 	<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<meta property="og:type" content="website"><meta property="og:site_name" content="Juniper Wayfinding"><meta property="og:title" content="Overthinking, Mapped | Juniper Wayfinding"><meta property="og:description" content="An interactive map by Demetri of what happens during overthinking, or rumination: the loops between thoughts, brain chemistry and the body, and how the roots, trunk and crown of the Juniper Method help them move from friction into flow. Informed by research."><meta property="og:url" content="https://juniperwayfinding.ca/ruminate"><meta property="og:image" content="https://juniperwayfinding.ca/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Juniper Wayfinding logo"><meta name="twitter:card" content="summary_large_image">
+	<meta property="og:type" content="website"><meta property="og:site_name" content="Juniper Wayfinding"><meta property="og:title" content="Overthinking, Mapped + Drive Formula | Juniper Wayfinding"><meta property="og:description" content="An interactive map by Demetri of what happens during overthinking, or rumination, and how the roots, trunk and crown of the Juniper Method help it move from friction into flow. Includes the Behavioural Drive Formula. Informed by research."><meta property="og:url" content="https://juniperwayfinding.ca/ruminate"><meta property="og:image" content="https://juniperwayfinding.ca/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Juniper Wayfinding logo"><meta name="twitter:card" content="summary_large_image">
 	<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css">
 <style>
   .wrap{font-family:var(--font-sans,'Manrope',ui-sans-serif,system-ui,sans-serif);color:var(--color-text-primary,#1a1a18);max-width:900px;margin:0 auto;background:#fffefa;line-height:normal;border-radius:16px;padding:24px 24px 20px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(24,61,50,.06)}
   .lever,.reset{font-family:inherit;color:inherit}
   .canvas-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
-  .swipe{display:none;font-size:11px;color:#8b8a82;text-align:center;margin:6px 0 2px}
+  .swipe{display:none;font-size:13px;color:#8b8a82;text-align:center;margin:6px 0 2px}
   .head h2{font-size:19px;font-weight:600;margin:0 0 2px}
-  .head p{font-size:13px;color:var(--color-text-secondary,#57564f);margin:0 0 14px;line-height:1.5}
+  .head p{font-size:15px;color:var(--color-text-secondary,#57564f);margin:0 0 14px;line-height:1.5}
 
-  .banner{display:flex;gap:12px;align-items:flex-start;border:1px solid;border-radius:12px 12px 0 0;border-bottom:none;padding:13px 15px;transition:background .35s,border-color .35s}
+  .banner{display:flex;gap:12px;align-items:flex-start;border:1px solid;border-radius:0 0 12px 12px;border-top:none;padding:13px 15px;transition:background .35s,border-color .35s}
   .dir{flex:0 0 auto;font-size:19px;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-weight:700;transition:all .35s}
   .rows{flex:1;min-width:0}
-  .row{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:12.5px;line-height:1.45;transition:margin .3s}
+  .row{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:14px;line-height:1.45;transition:margin .3s}
   .row .pill{flex:0 0 auto;width:17px;height:17px;border-radius:5px;display:grid;place-items:center;font-size:10px;font-weight:700;margin-top:1px}
   .pill.no{background:#FBE6E0;color:#9A2A1C;box-shadow:inset 0 0 0 1px #E7C3B8}
   .pill.yes{background:#E1F5EE;color:#0B6149;box-shadow:inset 0 0 0 1px #BFE6D8}
   .row b{font-weight:600}
-  .tier{flex:0 0 auto;width:150px;font-size:10px;font-weight:700;letter-spacing:.03em;color:#9a988f;line-height:1.55}
+  .tier{flex:0 0 auto;width:190px;font-size:12.5px;font-weight:700;letter-spacing:.03em;color:#9a988f;line-height:1.55}
   .row .why{color:var(--color-text-secondary,#57564f)}
   .r1{margin-left:0}.r2{margin-left:18px}.r3{margin-left:36px}
-  .result{margin-left:54px;margin-top:7px;padding-top:8px;border-top:1px dashed rgba(0,0,0,.18);font-size:13px;font-weight:600;line-height:1.45;display:flex;gap:8px}
+  .result{margin-left:54px;margin-top:7px;padding-top:8px;border-top:1px dashed rgba(0,0,0,.18);font-size:14.5px;font-weight:600;line-height:1.45;display:flex;gap:8px}
   .result .ar{opacity:.45;font-weight:400}
   @media(max-width:640px){.r2{margin-left:8px}.r3{margin-left:16px}.result{margin-left:0}.banner .dir{width:30px;height:30px;font-size:17px}}
   .wrap[data-level="0"] .dir{background:#FBE6E0;color:#9A2A1C}
@@ -36,7 +36,7 @@
   .wrap[data-level="0"] .banner{background:#FCF1ED;border-color:#E7C3B8}
   .wrap[data-level="1"] .banner,.wrap[data-level="2"] .banner{background:#FDF8EC;border-color:#E6D6A8}
   .wrap[data-level="3"] .banner{background:#EDF8F3;border-color:#BFE6D8}
-  .canvas{border:1px solid;border-radius:0 0 12px 12px;padding:8px 10px 4px;transition:border-color .35s}
+  .canvas{border:1px solid;border-radius:12px 12px 0 0;padding:8px 10px 4px;transition:border-color .35s}
   .wrap[data-level="0"] .canvas{border-color:#E7C3B8}
   .wrap[data-level="1"] .canvas,.wrap[data-level="2"] .canvas{border-color:#E6D6A8}
   .wrap[data-level="3"] .canvas{border-color:#BFE6D8}
@@ -87,7 +87,7 @@
   @keyframes flow{to{stroke-dashoffset:-26}}
   @media (prefers-reduced-motion:reduce){.ring,.exit{animation:none!important}}
 
-  .key{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--color-text-secondary,#57564f);margin:10px 0 12px}
+  .key{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--color-text-secondary,#57564f);margin:10px 0 12px}
   .key span{display:flex;align-items:center;gap:5px}
   .sw2{width:10px;height:10px;border-radius:3px;display:inline-block}
 
@@ -96,27 +96,27 @@
   .lever{border:1px solid var(--color-border-primary,rgba(0,0,0,.16));border-radius:12px;padding:12px 13px;cursor:pointer;background:var(--color-background-primary,#fff);transition:all .25s;text-align:left}
   .lever:hover{border-color:#9a988f}
   .lever.on{border-color:#0F6E56;background:#EDF8F3;box-shadow:inset 0 0 0 1px #0F6E56}
-  .lt{display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:600;line-height:1.3}
+  .lt{display:flex;align-items:flex-start;gap:8px;font-size:14.5px;font-weight:600;line-height:1.3}
   .sw{flex:0 0 auto;width:30px;height:18px;border-radius:10px;background:#d9d7cf;position:relative;transition:background .25s;margin-top:1px}
   .sw::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .25s}
   .lever.on .sw{background:#0F6E56}.lever.on .sw::after{transform:translateX(12px)}
-  .ld{font-size:11.5px;color:var(--color-text-secondary,#57564f);margin:6px 0 0;line-height:1.45}
-  .foot{font-size:11.5px;color:var(--color-text-secondary,#57564f);line-height:1.55;margin:12px 0 0}
-.foot a{display:block;margin-top:8px;color:#0F6E56;font-size:13px;font-weight:600;text-underline-offset:3px}
-  .reset{font-size:12px;background:none;border:none;color:#534AB7;cursor:pointer;padding:0;text-decoration:underline;margin:10px 0 0}
+  .ld{font-size:13px;color:var(--color-text-secondary,#57564f);margin:6px 0 0;line-height:1.45}
+  .foot{font-size:14px;color:var(--color-text-secondary,#57564f);line-height:1.55;margin:12px 0 0}
+.foot a{display:block;margin-top:8px;color:#0F6E56;font-size:14.5px;font-weight:600;text-underline-offset:3px}
+  .reset{font-size:13.5px;background:none;border:none;color:#534AB7;cursor:pointer;padding:0;text-decoration:underline;margin:10px 0 0}
   @media(max-width:640px){
     .wrap{border-radius:12px;padding:18px 14px 20px}
     .head h2{font-size:21px;line-height:1.25}
-    .head p{font-size:14px}
+    .head p{font-size:15px}
     .banner{padding:12px}
-    .row{display:grid;grid-template-columns:17px 1fr;column-gap:8px;font-size:13px}
+    .row{display:grid;grid-template-columns:17px 1fr;column-gap:8px;font-size:14px}
     .row .pill{grid-row:span 2}
-    .row .tier{width:auto;font-size:9.5px;line-height:1.4}
+    .row .tier{width:auto;font-size:12px;line-height:1.4}
     .row>span:last-child{grid-column:2}
     .canvas{padding:6px 0 4px}
     .canvas svg{min-width:620px;padding:0 8px}
     .swipe{display:block}
-    .ld{font-size:12.5px}
+    .ld{font-size:13.5px}
     .reset{padding:8px 0}
   }
 </style>
@@ -129,22 +129,15 @@
 		<div class="nav-links" id="site-links"><a href="index.html">Home</a><a href="method.html">Method</a><a href="why-juniper.html">Why Juniper</a><a href="rates.html">Rates</a><a href="about.html">About</a><a class="nav-book" href="booking.html">Book Your Wayfind</a></div>
 	</nav></header>
 	<main>
-		<section class="page-hero"><div class="shell"><h1>Overthinking, Mapped</h1><p class="proof-sub">Researched by Geniuses, Designed Simply by Demetri</p><p>A basic map of what happens when a mind won’t shut off: the loops running (the story and judgment you tell yourself), your brain chemistry and your body interactions, and how the Juniper Method helps them move from friction into flow. Flip the switches below and check out the changes!</p></div></section>
+		<section class="page-hero"><div class="shell"><h1>Overthinking, Mapped <span class="nowrap">+ Drive Formula</span></h1><p class="proof-sub">Researched by Geniuses, Simply Designed by Demetri</p><p class="hero-point"><strong>A Basic Interactive Overthinking Map:</strong><br>Flip the switches and watch the changes within you!</p><p class="hero-point"><strong>The Drive formula:</strong><br>Guides every decision you make every day, whether you want to be conscious of it or not.</p></div></section>
 		<section class="section model-section"><div class="shell">
+<h2 class="view-title" id="view-title">Two Options to View, Click Below</h2>
+<div class="view-switch" role="tablist" aria-labelledby="view-title"><button type="button" class="view-tab" role="tab" id="tab-example" aria-controls="view-example" aria-selected="true">Overthinking Example</button><button type="button" class="view-tab" role="tab" id="tab-formula" aria-controls="view-formula" aria-selected="false" tabindex="-1">Behavioural Drive Formula</button></div>
+<div class="view-panel" id="view-example" role="tabpanel" aria-labelledby="tab-example">
 <div class="wrap" data-level="0" data-act="0" data-belief="0">
   <div class="head">
-    <h2>Why my mind won’t shut off about it</h2>
-    <p>That person. That mistake. That task I haven’t done. I can’t win against it by thinking harder. Follow the red loop below: friction that circles endlessly.</p>
-  </div>
-
-  <div class="banner">
-    <div class="dir" id="dir">⟳</div>
-    <div class="rows">
-      <div class="row r1"><span class="pill no" id="p-calm">✕</span><span class="tier">Roots · body</span><span id="t-calm"></span></div>
-      <div class="row r2"><span class="pill no" id="p-bel">✕</span><span class="tier">Trunk · mind</span><span id="t-bel"></span></div>
-      <div class="row r3"><span class="pill no" id="p-act">✕</span><span class="tier">Crown · values &amp; worth</span><span id="t-act"></span></div>
-      <div class="result"><span class="ar">⟹</span><span id="res"></span></div>
-    </div>
+    <h2>Why Your Mind Won’t Stop Overthinking</h2>
+    <p>That break-up. That mistake at work or school. That task you keep putting off.<br>That feeling of physical inadequacy. That feeling of worthlessness.</p>
   </div>
 
   <div class="canvas">
@@ -268,6 +261,16 @@
   <p class="swipe">← swipe to explore the diagram →</p>
   </div>
 
+  <div class="banner">
+    <div class="dir" id="dir">⟳</div>
+    <div class="rows">
+      <div class="row r1"><span class="pill no" id="p-calm">✕</span><span class="tier">Roots · body</span><span id="t-calm"></span></div>
+      <div class="row r2"><span class="pill no" id="p-bel">✕</span><span class="tier">Trunk · mind</span><span id="t-bel"></span></div>
+      <div class="row r3"><span class="pill no" id="p-act">✕</span><span class="tier">Crown · values &amp; worth</span><span id="t-act"></span></div>
+      <div class="result"><span class="ar">⟹</span><span id="res"></span></div>
+    </div>
+  </div>
+
   <div class="key">
     <span><i class="sw2" style="background:#C0392B"></i>the loop: circling with no close</span>
     <span><i class="sw2" style="background:#0F6E56"></i>a part of the tree moving into flow</span>
@@ -375,6 +378,8 @@
     render();}
   render();
 </script>
+</div>
+<div class="view-panel" id="view-formula" role="tabpanel" aria-labelledby="tab-formula" hidden><figure class="formula-card formula-standalone"><dl class="formula-block"><div class="fb-row"><dt>Cost</dt><dd><i>=</i><span>Energy × <span class="nw">e<sup><span class="sr-only">to the power of </span>k × Time</sup></span> ÷ <span class="nw">(1 − Risk)</span></span></dd></div><div class="fb-row"><dt>Return</dt><dd><i>=</i><span>Reward × Chance</span></dd></div><div class="fb-row"><dt>Drive</dt><dd><i>=</i><span>Return − Cost</span></dd></div><div class="fb-row"><dt>Surprise</dt><dd><i>=</i><span>How it went − What you expected</span></dd></div></dl><figcaption class="formula-title">ALL VARIABLES ARE WEIGHTED BY YOUR <span class="glow-word">PERCEPTION</span> (past surprises)</figcaption></figure><dl class="term-lines"><div class="tl-row"><dt>Cost</dt><dd>You estimate cost based on your perception of the physical energy it will take, how hard it feels, how long you think it will take and how much risk is involved.</dd></div><div class="tl-row"><dt>Return</dt><dd>At the same time, you estimate how valuable the reward will be and how likely that reward is to come.</dd></div><div class="tl-row"><dt>Drive</dt><dd>Multiple Drives occur in each moment of choice. Whether to lie on the couch or study, whether to make food or order Take-Out, whether to use Professor Wayfinder or keep your Way as it is.</dd></div><div class="tl-row"><dt>Surprise</dt><dd>Positive Surprise is the key to adjusting high-cost, low-return evaluations by proving that your current model of Cost &amp; Return is producing the wrong type of Drive.</dd></div></dl></div>
 </div></section>
 		<section class="closing"><div class="shell"><h2>Your Way Has Always Been Within</h2><div class="actions" style="justify-content:center"><a class="button button-quiet" href="method.html"><span class="button-lines"><span class="button-kicker">Next Up:</span><span>The Juniper Method&nbsp;<span aria-hidden="true">→</span></span></span></a><a class="button button-shine" href="booking.html"><span class="button-lines"><span class="button-kicker">Take the Step:</span><span>Book Your Wayfind&nbsp;<span aria-hidden="true">→</span></span></span></a></div><p class="ai-note">I wrote all of the text on this website;<br>AI was used for design and structural elements</p></div></section>
 	</main>

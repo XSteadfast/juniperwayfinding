@@ -124,3 +124,25 @@ if (heroWord && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) 
 document.querySelectorAll('a[href="#"]').forEach((link) => {
 	link.addEventListener("click", (event) => event.preventDefault());
 });
+
+// Overthinking page: switch between the example map and the Drive formula.
+const viewTabs = [...document.querySelectorAll(".view-tab")];
+const showView = (tab, focus) => {
+	viewTabs.forEach((t) => {
+		const on = t === tab;
+		t.setAttribute("aria-selected", String(on));
+		t.tabIndex = on ? 0 : -1;
+		document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+	});
+	if (focus) tab.focus();
+	history.replaceState(null, "", tab.id === "tab-formula" ? "#formula" : location.pathname + location.search);
+};
+viewTabs.forEach((tab, i) => {
+	tab.addEventListener("click", () => showView(tab));
+	tab.addEventListener("keydown", (e) => {
+		if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+		e.preventDefault();
+		showView(viewTabs[(i + (e.key === "ArrowRight" ? 1 : viewTabs.length - 1)) % viewTabs.length], true);
+	});
+});
+if (viewTabs.length && location.hash === "#formula") showView(document.getElementById("tab-formula"));
